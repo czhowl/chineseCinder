@@ -45,7 +45,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;"..\..\cinder\Cinder\include";..\..\cinder\Cinder\blocks\Cinder-Text\include;..\..\cinder\Cinder\blocks\Cinder-Text\include\msw</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\cinder\Cinder\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -58,8 +58,8 @@
       <AdditionalIncludeDirectories>"..\..\cinder\Cinder\include";..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>cinder.lib;OpenGL32.lib;%(AdditionalDependencies);..\..\cinder\Cinder\blocks\Cinder-Text\lib\msw\x86\cairo-static.lib;..\..\cinder\Cinder\blocks\Cinder-Text\lib\msw\x86\pixman-1.lib;libpng.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>"..\..\cinder\Cinder\lib\msw\$(PlatformTarget)";"..\..\cinder\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset)"</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cinder.lib;OpenGL32.lib;%(AdditionalDependencies);libpng.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\cinder\Cinder\lib\msw\$(PlatformTarget);..\..\cinder\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -102,11 +102,9 @@
   <ItemGroup />
   <ItemGroup>
     <ClCompile Include="..\src\chineseApp.cpp" />
-    <ClCompile Include="..\..\cinder\Cinder\blocks\Cinder-Text\src\Cairo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h" />
-    <ClInclude Include="..\..\cinder\Cinder\blocks\Cinder-Text\include\cinder\cairo\Cairo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

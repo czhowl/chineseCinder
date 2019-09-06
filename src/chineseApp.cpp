@@ -7,6 +7,8 @@
 #include "cinder/Unicode.h"
 #include "jsoncpp/json.h"
 
+#include "txt/TextBox.h"
+
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -20,6 +22,7 @@ class chineseApp : public App {
 	void update() override;
 	void draw() override;
 	static void prepare(Settings *settings);
+	std::string unescape( const std::string& s );
 
 	void render();
 
@@ -28,6 +31,8 @@ class chineseApp : public App {
 	vec2				mSize;
 	Font				mFont;
 	string				mChinese;
+
+	txt::TextBox		mTextBox;
 };
 
 void chineseApp::setup()
@@ -49,25 +54,66 @@ void chineseApp::setup()
 	mText = "username: ";
 	mText += mChinese;
 	mFont = Font( loadAsset( "MFPuYue_Noncommercial-Regular.ttf" ), 24 );
+	txt::Font font( loadAsset( "MFPuYue_Noncommercial-Regular.ttf" ), 24 );
 	mSize = vec2( 250, 40 );
-	render();
+	mTextBox.setSize( ci::vec2( 450, txt::GROW ) )
+		//.setFont( txt::Font( "Arial", 12 ) );
+		.setFont( font );
+	mTextBox.setText(unescape( mText) );
+	mTextBox.doLayout();
+	//render();
+}
+
+std::string chineseApp::unescape( const std::string& s )
+{
+	std::string res;
+	std::string::const_iterator it = s.begin();
+
+	while( it != s.end() ) {
+		char c = *it++;
+
+		if( c == '\\' && it != s.end() ) {
+			switch( *it++ ) {
+				case '\\':
+				c = '\\';
+				break;
+
+				case 'n':
+				c = '\n';
+				break;
+
+				case 't':
+				c = '\t';
+				break;
+
+				// all other escapes
+				default:
+				// invalid escape sequence - skip it. alternatively you can copy it as is, throw an exception...
+				continue;
+			}
+		}
+
+		res += c;
+	}
+
+	return res;
 }
 
 void chineseApp::keyDown( KeyEvent event )
 {
-	if( event.getCharUtf32() ) {
-		std::u32string strUtf32( 1, event.getCharUtf32() );
-		std::string str = ci::toUtf8( strUtf32 );
+	//if( event.getCharUtf32() ) {
+	//	std::u32string strUtf32( 1, event.getCharUtf32() );
+	//	std::string str = ci::toUtf8( strUtf32 );
 
-		mText += str;
-		render();
-	}
+	//	mText += str;
+	//	render();
+	//}
 }
 
 void chineseApp::mouseDrag( MouseEvent event )
 {
-	mSize = event.getPos();
-	render();
+	//mSize = event.getPos();
+	//render();
 }
 
 void chineseApp::render()
@@ -90,12 +136,18 @@ void chineseApp::update()
 
 void chineseApp::draw()
 {
-	gl::setMatricesWindow( getWindowSize() );
-	gl::enableAlphaBlending();
-	gl::clear( Color( 0, 0, 0 ) );
+	//gl::setMatricesWindow( getWindowSize() );
+	//gl::enableAlphaBlending();
+	//gl::clear( Color( 0, 0, 0 ) );
 
-	if( mTextTexture )
-		gl::draw( mTextTexture );
+	//if( mTextTexture )
+	//	gl::draw( mTextTexture );
+
+	gl::clear( Color( 0, 0, 0 ) );
+	ci::gl::ScopedMatrices matrices;
+	ci::gl::translate( 100, 100 );
+	gl::color( 1.0, 0.0, 0.0);
+	mTextBox.draw();
 }
 
 void chineseApp::prepare(Settings *settings)

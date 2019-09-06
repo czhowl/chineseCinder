@@ -1,0 +1,61 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Blocks">
+      <UniqueIdentifier>{2CAAA715-735F-45EC-AFEF-89C4AD08F830}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Cairo">
+      <UniqueIdentifier>{1539FE92-DA8F-4A7A-9CDA-F5CC5B2AE24C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Cairo\src">
+      <UniqueIdentifier>{04C15504-442F-41D0-982E-B5AD97990646}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Cairo\include">
+      <UniqueIdentifier>{0E915832-6EE8-4111-9201-CA24CC75D619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Cairo\include\cinder">
+      <UniqueIdentifier>{28D34BF1-1E14-463E-9EF5-72ED5BB46277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Cairo\include\cinder\cairo">
+      <UniqueIdentifier>{962B1036-8ED8-4D4D-A9D1-FED2C03269EC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\chineseApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chineseApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\cinder\Cinder\blocks\Cinder-Text\src\Cairo.cpp">
+      <Filter>Blocks\Cairo\src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\cinder\Cinder\blocks\Cinder-Text\include\cinder\cairo\Cairo.h">
+      <Filter>Blocks\Cairo\include\cinder\cairo</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
